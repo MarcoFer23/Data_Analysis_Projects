@@ -60,4 +60,4 @@ CREATE TABLE Si_trova (
     CONSTRAINT FK_Videogiochi_Si_trova FOREIGN KEY (titolo , sviluppatore)
         REFERENCES Videogiochi (titolo , sviluppatore)
         ON UPDATE CASCADE ON DELETE NO ACTION
-)
+);
