@@ -15,7 +15,7 @@ CREATE TABLE Dipendente (
     data_inizio_impiego DATE NOT NULL,
     data_fine_impiego DATE,
     PRIMARY KEY (codice_fiscale , data_inizio_impiego),
-    FOREIGN KEY (id_store)
+    CONSTRAINT FK_Store_Dipendente FOREIGN KEY (id_store)
         REFERENCES Store (id_store)
         ON UPDATE CASCADE ON DELETE NO ACTION
 );
@@ -24,7 +24,7 @@ CREATE TABLE Settore (
     id_store INT,
     id_settore INT,
     PRIMARY KEY (id_store , id_settore),
-    FOREIGN KEY (id_store)
+    CONSTRAINT FK_Store_Settore FOREIGN KEY (id_store)
         REFERENCES Store (id_store)
         ON UPDATE CASCADE ON DELETE NO ACTION
 );
