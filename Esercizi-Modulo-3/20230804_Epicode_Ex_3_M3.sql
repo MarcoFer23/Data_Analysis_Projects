@@ -29,7 +29,7 @@ CREATE TABLE Settore (
         ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
-CREATE INDEX idx_id_settore ON Settore (id_settore);
+CREATE UNIQUE INDEX idx_id_settore ON Settore (id_settore);
 
 
 CREATE TABLE Videogiochi (
