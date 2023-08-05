@@ -27,7 +27,7 @@ tipo_aereo varchar(255),
 primary key (id_volo),
 constraint FK_Aereo_Volo foreign key (tipo_aereo) references Aereo(tipo_aereo) on update cascade on delete no action,
 constraint FK_Città_Part_Aeroporto_Volo foreign key (città_part) references Aeroporto(città) on update cascade on delete no action,
-constraint FK_Città_Arrivo_Aeroporto_Volo foreign key (città_arrivo) references Aeroporto
+constraint FK_Città_Arrivo_Aeroporto_Volo foreign key (città_arrivo) references Aeroporto(città) on update cascade on delete no action
 );
 
 select città from Aeroporto where num_piste is null;
