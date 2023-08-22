@@ -1,4 +1,4 @@
-create database esercizio_4_m4;
+create database esercizio_4_m3;
 
 use esercizio_4_m3;
 
