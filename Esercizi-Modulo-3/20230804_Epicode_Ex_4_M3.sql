@@ -1,6 +1,6 @@
 create database esercizio_4_m4;
 
-use esercizio_4_m4;
+use esercizio_4_m3;
 
 create table Aeroporto (
 città varchar(255),
