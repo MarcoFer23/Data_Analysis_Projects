@@ -15,9 +15,6 @@ create table Docente (
         primary key (matricola_docente,nome_docente)
 );
 
-CREATE UNIQUE INDEX index_docente
-ON Docente (matricola_docente,nome_docente);
-
 create table Corso (
     codice_corso varchar(255),
     nome_corso varchar(255),
@@ -37,19 +34,14 @@ create table Esame (
     constraint fk_matricola_studente_Esame_Studente foreign key (matricola_studente) references Studente(matricola_studente) on update cascade on delete no action
 );
 
-CREATE UNIQUE INDEX index_esame
-ON Esame (codice_corso,matricola_studente);
-
-select Studente.nome_studente, Studente.matricola_studente, Esame.voto_esame, Corso.nome_corso, Docente.nome_docente
+select Studente.nome_studente, Studente.matricola_studente, Corso.nome_corso, Esame.data_esame, Esame.voto_esame, Docente.nome_docente
 from Studente
-inner join Esame on Esame.matricola_studente=Studente.matricola_studente
+inner join Esame on Studente.matricola_studente=Esame.matricola_studente
 inner join Corso on Esame.codice_corso=Corso.codice_corso
 inner join Docente on Corso.matricola_docente=Docente.matricola_docente
-where Esame.voto_esame > 28
-group by Studente.nome_studente, Studente.matricola_studente, Esame.voto_esame, Corso.nome_corso, Docente.nome_docente;
+where Esame.voto_esame>28;
 
-select Docente.matricola_docente, Corso.nome_corso, Esame.settore_scientifico
+select Docente.nome_docente, Corso.nome_corso, Esame.settore_scientifico
 from Docente
 inner join Corso on Docente.matricola_docente=Corso.matricola_docente
-inner join Esame on Corso.codice_corso=Esame.codice_corso
-group by Docente.matricola_docente, Corso.nome_corso, Esame.settore_scientifico;
+inner join Esame on Corso.codice_corso=Esame.codice_corso;
