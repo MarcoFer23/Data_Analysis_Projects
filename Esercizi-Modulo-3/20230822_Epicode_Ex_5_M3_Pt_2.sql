@@ -39,3 +39,17 @@ create table Esame (
 
 CREATE UNIQUE INDEX index_esame
 ON Esame (codice_corso,matricola_studente);
+
+select Studente.nome_studente, Studente.matricola_studente, Esame.voto_esame, Corso.nome_corso, Docente.nome_docente
+from Studente
+inner join Esame on Esame.matricola_studente=Studente.matricola_studente
+inner join Corso on Esame.codice_corso=Corso.codice_corso
+inner join Docente on Corso.matricola_docente=Docente.matricola_docente
+where Esame.voto_esame > 28
+group by Studente.nome_studente, Studente.matricola_studente, Esame.voto_esame, Corso.nome_corso, Docente.nome_docente;
+
+select Docente.matricola_docente, Corso.nome_corso, Esame.settore_scientifico
+from Docente
+inner join Corso on Docente.matricola_docente=Corso.matricola_docente
+inner join Esame on Corso.codice_corso=Esame.codice_corso
+group by Docente.matricola_docente, Corso.nome_corso, Esame.settore_scientifico;
