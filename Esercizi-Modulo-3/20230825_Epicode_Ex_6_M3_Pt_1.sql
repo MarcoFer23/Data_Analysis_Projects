@@ -1,6 +1,8 @@
 create database esercizio_6_m3_pt_1;
 
+
 use esercizio_6_m3_pt_1;
+
 
 create table Studente (
     matricola_studente varchar(255),
@@ -34,5 +36,20 @@ create table Esame (
     constraint fk_matricola_studente_Esame_Studente foreign key (matricola_studente) references Studente(matricola_studente) on update cascade on delete no action
 );
 
+-- Query 1
 
+select Studente.matricola_studente, Studente.nome_studente, max(Esame.voto_esame), min(Esame.voto_esame), avg(Esame.voto_esame) 
+from Studente
+inner join Esame on Studente.matricola_studente=Esame.matricola_studente
+group by Studente.matricola_studente, Studente.nome_studente;
 
+-- Query 2 
+
+select Studente.matricola_studente, Studente.nome_studente, max(Esame.voto_esame), min(Esame.voto_esame), avg(Esame.voto_esame) as avg_voto_esame
+from Studente
+inner join Esame on Studente.matricola_studente=Esame.matricola_studente
+group by Studente.matricola_studente, Studente.nome_studente
+having avg(Esame.voto_esame)>25 and count(distinct Esame.data_esame)>=10
+order by avg_voto desc;
+
+-- Buon weekend Simone, e grazie come sempre! :-) 
