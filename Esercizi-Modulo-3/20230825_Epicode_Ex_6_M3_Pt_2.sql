@@ -40,7 +40,7 @@ where Dipartimento.codice_dipartimento not in (select Concorso_Master.codice_dip
                                                where Concorso_Master.numero_posti_disponibili<=7)
 group by Dipartimento.nome_dipartimento, Dipartimento.settore_scientifico;
 
--- Query 3 TO BE REVIEWED
+-- Query 3 ( To be reviewed )
 
 select S.matricola_studente, S.nome_studente
 from Studente as S

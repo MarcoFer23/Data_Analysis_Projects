@@ -50,4 +50,4 @@ from Studente
 inner join Esame on Studente.matricola_studente=Esame.matricola_studente
 group by Studente.matricola_studente, Studente.nome_studente
 having avg(Esame.voto_esame)>25 and count(distinct Esame.data_esame)>=10
-order by avg_voto desc;
+order by avg_voto_esame desc;
