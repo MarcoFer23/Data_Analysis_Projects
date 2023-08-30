@@ -40,16 +40,12 @@ where Dipartimento.codice_dipartimento not in (select Concorso_Master.codice_dip
                                                where Concorso_Master.numero_posti_disponibili<=7)
 group by Dipartimento.nome_dipartimento, Dipartimento.settore_scientifico;
 
--- Query 3 ( To be reviewed )
+-- Query 3 ( Reviewed )
 
-select S.matricola_studente, S.nome_studente
-from Studente as S
-inner join Partecipa_Concorso_Master as PCM1 on S.matricola_studente=PCM1.matricola_studente
-inner join Partecipa_Concorso_Master as PCM2 on PCM1.Matricola_studente=PCM2.matricola_studente
-inner join Concorso_Master as CM1 on PCM2.cod_master=CM1.cod_master
-inner join Concorso_Master as CM2 on CM1.cod_master=CM2.cod_master
- where S.voto_laurea>100
-  and CM1.data_pubblicazione=CM2.data_pubblicazione
-  and PCM1.cod_master>PCM2.cod_master
-group by S.matricola_studente, S.nome_studente
-having count(distinct Partecipa_Concorso_Master.data_invio_domanda)>=2;
+SELECT S.matricola_studente, S.nome_studente
+FROM Studente as S
+JOIN Partecipa_Concorso_Master as PCM on PCM.matricola_studente=S.matricola_studente
+JOIN Concorso_Master as CM on CM.codice_master=PCM.codice_master
+WHERE S.voto_laurea>100
+GROUP BY S.matricola_studente, S.nome_studente
+HAVING COUNT(CM.codice_master)>=2 AND COUNT(DISTINCT CM.data_pubblicazione)<COUNT(CM.codice_master);
