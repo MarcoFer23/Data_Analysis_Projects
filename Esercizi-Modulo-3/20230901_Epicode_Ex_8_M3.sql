@@ -228,7 +228,7 @@ VALUES
 	(24,26,7,'2023-04-14 14:00:00'),
 	(25,11,10,'2023-05-19 16:10:00');
     
--- Query per interrogare il database creato
+-- Query per interrogare il database creato { non in ordine di difficoltà crescente }
 
 -- Query 1: Visualizzare l'ID, il nome e l'età dell'animale, insieme al nome del proprietario; ordinare per età dell'animale in ordine decrescente.
 
