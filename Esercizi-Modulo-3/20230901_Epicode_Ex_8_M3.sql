@@ -230,3 +230,86 @@ VALUES
     
 -- Query per interrogare il database creato
 
+-- Query 1: Visualizzare l'ID, il nome e l'età dell'animale, insieme al nome del proprietario; ordinare per età dell'animale in ordine decrescente.
+
+select Animale_Domestico.ID_Animale, Animale_Domestico.Nome_Animale, year(now())-year(Animale_Domestico.Data_Nascita) as Età_Animale, Proprietario.Nome_Completo as Nome_Proprietario
+from Animale_Domestico
+inner join Proprietario on Animale_Domestico.ID_Proprietario=Proprietario.ID_Proprietario
+order by Età_Animale DESC;
+
+-- Query 2: Visualizzare mediante una vista il nome e lo stipendio del veterinario dallo stipendio più alto. 
+
+create view Veterinario_Massimo_Stipendio (Nome_Veterinario, Stipendio) as
+select Nome_Veterinario, Stipendio
+from Veterinario
+where Stipendio = (select MAX(Stipendio) from Veterinario);
+
+-- Query 3: Visualizzare l'ID e il nome dell'animale insieme al nome, al genere e al nome comune della specie di tutti quelli animali il cui genere non corrisponde a Canis e Felis.
+
+select Animale_Domestico.ID_Animale, Animale_Domestico.Nome_Animale, Specie.Nome_Specie, Specie.Genere, Specie.Nome_Comune
+from Animale_Domestico
+inner join Specie on Animale_Domestico.ID_Specie=Specie.ID_Specie
+where Specie.Genere not in ('Canis','Felis')
+order by Animale_Domestico.ID_Animale;
+
+-- Query 4: Visualizzare l'ID, il nome, la data di nascita e il nome del proprietario degli animali domestici che appartengono a persone il cui nome inizia per M.
+
+select Animale_Domestico.ID_Animale, Animale_Domestico.Nome_Animale, Animale_Domestico.Data_Nascita, Proprietario.Nome_Completo
+from Animale_Domestico
+inner join Proprietario on Animale_Domestico.ID_Proprietario=Proprietario.ID_Proprietario
+where Proprietario.Nome_Completo like 'M%'
+order by Animale_Domestico.ID_Animale;
+
+-- Query 5: Query 5: Visualizzare il nome del proprietario, l'ID del proprietario e la provincia di appartenenza di tutti i proprietari di animali non residenti in provincia di Latina.
+
+select Proprietario.Nome_Completo, Proprietario.ID_Proprietario, Città.Provincia
+from Proprietario
+inner join Città on Città.ID_Città=Proprietario.ID_Città
+where not Città.Provincia = 'LT'
+order by Proprietario.Nome_Completo;
+
+-- Query 6: Visualizzare per ogni città il numero totale di animali domestici presenti; ordinare per il totale di animali domestici presenti in ordine decrescente, e per nome città in ordine alfabetico dalla A alla Z.
+
+select Città.Nome_Città, count(Animale_Domestico.ID_Animale) as Totale_Animali_Presenti
+from Città
+inner join Proprietario on Città.ID_Città=Proprietario.ID_Città
+inner join Animale_Domestico on Proprietario.ID_Proprietario=Animale_Domestico.ID_Proprietario
+group by Città.Nome_Città
+order by Totale_Animali_Presenti desc, Città.Nome_Città;
+
+-- Query 7: Visualizzare l'ID, il nome, l'indirizzo email e il recapito telefonico di tutti i clienti che vivono a Bassiano.
+
+select ID_Proprietario, Nome_Completo, Indirizzo_Email, Recapito_Telefonico
+from Proprietario
+where ID_Città = (select ID_Città from Città where Nome_Città = 'Bassiano');
+
+-- Query 8: Visualizzare l'ID, il nome, l'indirizzo email e il recapito telefonico, più la città di residenza, di tutti i clienti che risiedono nella Provincia di Latina: Ordinare dalla A alla Z per il nome del proprietario.
+
+select Proprietario.ID_Proprietario, Proprietario.Nome_Completo, Proprietario.Indirizzo_Email, Proprietario.Recapito_Telefonico, Città.Nome_Città
+from Proprietario
+inner join Città ON Proprietario.ID_Città=Città.ID_Città
+where Provincia = 'LT'
+order by Proprietario.Nome_Completo;
+
+-- Query 9: Visualizzare per ogni veterinario l'ID, il nome, gli anni di esperienza (dalla data della laurea), lo stipendio e il numero di visite effettuate nell'anno corrente. Ordinare dalla A alla Z per nome veterinario.
+
+select Veterinario.ID_Veterinario, Veterinario.Nome_Veterinario, year(now())-year(Veterinario.Data_Laurea) as Anni_di_Esperienza ,Veterinario.Stipendio, count(Visita.Data_Visita) as Totale_Visite_2023
+from Veterinario
+inner join Visita ON Veterinario.ID_Veterinario = Visita.ID_Veterinario
+group by Veterinario.ID_Veterinario
+order by Veterinario.Nome_Veterinario;
+
+-- Query 10: Per ogni veterinario visualizzare il nome completo e il numero di visite effettuate nell'anno corrente; ordinare in ordine alfabetico.
+
+select Veterinario.Nome_Veterinario, count(Visita.Data_Visita) as Totale_Visite_2023
+from Veterinario
+join Visita ON Veterinario.ID_Veterinario = Visita.ID_Veterinario
+group by Veterinario.Nome_Veterinario
+order by Veterinario.Nome_Veterinario;
+
+/* 
+Dato che per praticità vi sono solo riferimenti a visite del 2023, non c'è necessità di utilizzare delle condizionali tramite WHERE o HAVING (a seconda dei casi).
+Grazie mille per essere arrivato fin qui Simone e per l'aiuto che ci dai praticamente tutti i giorni :-) 
+Per ringraziarti ti lascio un piccolo "Easter Egg", dato che hai apprezzato i The Algorithm. A presto e buon fine settimana! 
+https://www.youtube.com/watch?v=i74eZ2N_lB4 
+*/
