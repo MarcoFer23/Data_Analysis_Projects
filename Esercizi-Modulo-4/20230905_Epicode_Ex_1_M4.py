@@ -6,14 +6,14 @@ studenti = 25
 '''
 2. Abbiamo 25 studenti; memorizzare questo dato in una variabile e stamparla a video.
 '''
-studenti = 25
-print("Studenti: ",studenti)
+studenti = 25 # Variabile già dichiarata in precedenza, ma aggiunta solo ai fini dell'esercizio.
+print("Studenti: ",str(studenti))
 
 '''
 3. Abbiamo 25 studenti; memorizzare questo dato in una variabile. 
     Arrivano altri 3 studenti; memorizzare questo dato in un'altra variabile.
 '''
-studenti = 25
+studenti = 25 # Variabile già dichiarata in precedenza, ma aggiunta solo ai fini dell'esercizio.
 altri_studenti = 3
 
 '''
@@ -21,16 +21,16 @@ altri_studenti = 3
     Arrivano altri 3 studenti; memorizzare questo dato in un'altra variabile. 
         Creare un'altra variabile ancora che contenga la somma delle prime due, poi stamparla a video.
 '''
-studenti = 25
-altri_studenti = 3 
+studenti = 25 # Variabile già dichiarata in precedenza, ma aggiunta solo ai fini dell'esercizio.
+altri_studenti = 3 # Variabile già dichiarata in precedenza, ma aggiunta solo ai fini dell'esercizio.
 somma_studenti = studenti + altri_studenti
-print(somma_studenti)
+print(str(somma_studenti))
 
 '''
 5. Creare, a mano, una lista che contenga i numeri da 0 a 5, memorizzarla in una variable e infine stamparla a video.
 '''
 lista_numeri = [0,1,2,3,4,5]
-print("La lista è questa: ",lista_numeri)
+print("La lista è questa: ",str(lista_numeri))
 
 # alternativa con "range"
 
