@@ -308,8 +308,9 @@ group by Veterinario.Nome_Veterinario
 order by Veterinario.Nome_Veterinario;
 
 /* 
+
 Dato che per praticità vi sono solo riferimenti a visite del 2023, non c'è necessità di utilizzare delle condizionali tramite WHERE o HAVING (a seconda dei casi).
-Grazie mille per essere arrivato fin qui Simone e per l'aiuto che ci dai praticamente tutti i giorni :-) 
-Per ringraziarti ti lascio un piccolo "Easter Egg", dato che hai apprezzato i The Algorithm. A presto e buon fine settimana! 
-https://www.youtube.com/watch?v=i74eZ2N_lB4 
+
 */
+
+-- Bring it on, Python! 
