@@ -17,16 +17,23 @@ Domanda 2:
 Stampare a video tutti i numeri da 0 a 20 utilizzando il costrutto while.
 """
 
+# Prima versione
+
 i = 0
 while i <= 20:
     print(i)
     i += 1
+
+# Seconda versione    
 
 i = 0
 while i <= 20:
     print(i," ", end="")
     i += 1
 
+# Terza versione ( in due varianti )
+
+# Variante 1
     
 i = 0
 risultato = ""
@@ -37,6 +44,7 @@ while i <= 20:
 
 print(risultato.strip("-"))
 
+# Variante 2
 
 i = 0
 risultato = ""
@@ -53,6 +61,8 @@ Domanda 3:
 Calcolare e stampare tutte le prime 10 potenze di 2, utilizzando un ciclo while.
 """
 
+# Prima versione
+
 i = 2
 x = 0 
 
@@ -64,6 +74,7 @@ while x < 10:
 
 print(risultato.strip("-"))
 
+# Seconda versione
 
 i = 2
 x = 0 
@@ -82,6 +93,8 @@ Domanda 4:
 Calcolare e stampare tutte le prime N potenze di 2 con un ciclo while, domandando all'utente di inserire N.
 """
 
+# Prima versione
+
 i = 2
 x = 0 
 N = int(input("Specificare un valore N per avviare il calcolo."))
@@ -93,6 +106,7 @@ while x < N:
 
 print(risultato.strip("-"))
 
+# Seconda versione
 
 i = 2
 x = 0 
@@ -142,7 +156,7 @@ corsi = ["Cybersecurity", "Data Analyst", "Backend",
 
 Parte 2:
 
-Aggiungere i dati mancanti alla lista corsi, sapendo che
+Aggiungere i dati mancanti alla lista corsi, sapendo che:
 
 Emma segue Data Analyst
 Faith segue Backend
@@ -154,7 +168,16 @@ coda alle liste, poi verificheremo che sono della stessa lunghezza e se lo sono
 stamperemo la lista corsi.
 """   
 
+studenti = ["Alex", "Bob", "Cindy", "Dan", "Emma", "Faith", "Grace", "Henry"]
+corsi = ["Cybersecurity", "Data Analyst", "Backend", "Frontend", "Data Analyst", "Backend"]
 
+corsi.append("Frontend")
+corsi.append("Cybersecurity")
+
+if len(studenti) == len(corsi):
+    print(str(corsi))
+else:
+    print("Le due liste non hanno la stessa lunghezza")
 
 """
 Domanda 7: 
@@ -179,3 +202,19 @@ Domanda 8:
 Memorizza e stampa tutti i fattori di un numero dato in input.
 """
 
+num = int(input("Scrivi un qualsiasi numero intero N."))
+
+lista = []
+
+divisore = 2
+
+while num != 1:
+    if num % divisore == 0:
+        lista.append(divisore)
+        num /= divisore
+    else:
+        divisore += 1  
+
+print(lista)
+
+# Anar kaluva tielyanna!
