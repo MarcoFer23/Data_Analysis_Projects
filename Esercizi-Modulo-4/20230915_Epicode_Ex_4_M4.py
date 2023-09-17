@@ -3,9 +3,19 @@ Domanda 1:
 Abbiamo la stringa: nome_scuola = "Epicode". Stampare ogni carattere della stringa, uno su ogni riga, utilizzando un costrutto for.
 """
 
+# Soluzione con ciclo for:
+
 nome_scuola = "Epicode"
 for x in nome_scuola:
     print(x)
+
+# Soluzione con ciclo while:
+
+nome_scuola = "Epicode"
+i = 0
+while i < len(nome_scuola):
+    print(nome_scuola[i])
+    i += 1
 
 """
 Domanda 2: 
@@ -13,9 +23,19 @@ Abbiamo una serie di simboli di elementi chimici (tutti da una sola lettera)
 all'interno della variabile elementi: elementi = "NPKOHC". Stampare ogni elemento su una riga diversa.
 """
 
+# Soluzione con ciclo for:
+
 elementi = "NPKOHC"
 for x in elementi:
     print(x)
+
+# Soluzione con ciclo while:
+
+elementi = "NPKOHC"
+i = 0
+while i < len(elementi):
+    print(elementi[i])
+    i += 1
 
 """
 Domanda 3:
@@ -23,9 +43,19 @@ Abbiamo una serie di simboli di elementi chimici (tutti da una sola lettera)
 all'interno della variabile elementi: elementi = "NPKOHC". Stampare ogni elemento su una riga diversa, preceduto dalla scritta "elemento - ".
 """
 
+# Soluzione con ciclo for:
+
 elementi = "NPKOHC"
 for x in elementi:
-    print("elemento - ",x)
+    print("elemento - ", x)
+
+#Soluzione con ciclo while:
+
+elementi = "NPKOHC"
+i = 0
+while i < len(elementi):
+    print("elemento - ", elementi[i])
+    i += 1
 
 """
 Domanda 4:
@@ -33,9 +63,21 @@ Abbiamo una serie di simboli di elementi chimici (tutti da una sola lettera) all
 Stampare ogni elemento su una riga diversa, preceduto dalla scritta "elemento - numero n" dove al posto di n scriveremo un numero progressivo che parte da 1.
 """
 
+# Soluzione con ciclo for:
+
 elementi = "NPKOHC"
 for n, x in enumerate(elementi,start=1):
     print("elemento - numero ",n,": ",x)
+
+# Soluzione con ciclo while:
+
+elementi = "NPKOHC"
+i = 0
+n = 1
+while i < len(elementi):
+    print("elemento - numero ",n,": ",elementi[i])
+    i += 1
+    n += 1
 
 """
 Domanda 5:
@@ -47,7 +89,7 @@ Fare diverse versioni:
 • una con il metodo delle stringhe .replace().
 """
 
-# Versione con ciclo for
+# Soluzione con ciclo for:
 
 stringa = "marmalade"
 nuova_stringa = ""
@@ -65,21 +107,21 @@ print(nuova_stringa)
 # Versione con ciclo while
 
 stringa = "marmalade"
-contatore = 0
+i = 0
 nuova_stringa = ""
 
-while contatore < len(stringa):
-    if stringa[contatore] == "a":
+while i < len(stringa):
+    if stringa[i] == "a":
         nuova_stringa += "e"
-    elif stringa[contatore] == "e":
+    elif stringa[i] == "e":
         nuova_stringa += "a"
     else:
-        nuova_stringa += stringa[contatore] 
-    contatore += 1
+        nuova_stringa += stringa[i] 
+    i += 1
 
 print(nuova_stringa) 
 
-# Versione con metodo stringe .replace()
+# Soluzione con metodo stringhe .replace()
 
 x = "marmalade"
 num_a = x.count("a")
@@ -107,10 +149,9 @@ pass # modificare qui
 """
 
 x = 2
-contatore = range(10)
 
-for contatore in range(10):
-    print(x**contatore, " ", end="")
+for i in range(10):
+    print("2 ^", i, "=", x**i)
 
 """
 Domanda 7: 
@@ -142,7 +183,7 @@ x = 2
 
 lista_risultante = list()
 
-for y in range(0,N+1):
+for y in range(0,N+1): # Nel range il valore N non sarebbe incluso, quindi scriviamo N + 1 per assicurarci che venga preso proprio N come valore massimo del range
     lista_risultante.append(x**y)    
 
 print(lista_risultante)
@@ -174,7 +215,6 @@ print(lista_risultante)
 
 N = int(input("Scrivi un numero intero N."))
 x = 3
-
 lista_risultante = list()
 
 for y in range(0,N+1):
@@ -228,7 +268,7 @@ x = 2
 i = 0 
 
 while x**i <= 25000:
-    print(x**i, " ", end="")
+    print("2 ^", i, "=" , x**i)
     i += 1
 
 """
@@ -241,7 +281,7 @@ x = 2
 i = 0 
 
 while x**i <= N:
-    print(x**i, " ", end="")
+    print("2 ^", i, "=" , x**i)
     i += 1
 
 """
@@ -270,10 +310,10 @@ print(lista_risultante, " ", end="")
 x = 2
 lista_risultante = list()
 
-for y in range(0,100, 3):
+for y in range(0,100,3):
     lista_risultante.append(x**y)
 
-print(lista_risultante, " ", end="") 
+print(lista_risultante, " ", end="")
 
 """
 Domanda 13:
@@ -295,7 +335,7 @@ for x in numeri:
     
 print(max)
 
-# Alternativa più easy:
+# Alternativa più easy senza ciclo for:
 
 numeri = [4, 9, 5, 1, 7, 10, 2, 3]
 
