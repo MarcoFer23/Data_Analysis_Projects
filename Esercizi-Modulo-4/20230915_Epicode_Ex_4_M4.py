@@ -49,7 +49,7 @@ elementi = "NPKOHC"
 for x in elementi:
     print("elemento - ", x)
 
-#Soluzione con ciclo while:
+# Soluzione con ciclo while:
 
 elementi = "NPKOHC"
 i = 0
@@ -104,7 +104,7 @@ for x in stringa:
 
 print(nuova_stringa)               
 
-# Versione con ciclo while
+# Soluzione con ciclo while:
 
 stringa = "marmalade"
 i = 0
