@@ -3,13 +3,13 @@ Domanda 1:
 Abbiamo la stringa: nome_scuola = "Epicode". Stampare ogni carattere della stringa, uno su ogni riga, utilizzando un costrutto for.
 """
 
-# Soluzione con ciclo for:
+# Versione con ciclo for:
 
 nome_scuola = "Epicode"
 for x in nome_scuola:
     print(x)
 
-# Soluzione con ciclo while:
+# Versione con ciclo while:
 
 nome_scuola = "Epicode"
 i = 0
@@ -23,13 +23,13 @@ Abbiamo una serie di simboli di elementi chimici (tutti da una sola lettera)
 all'interno della variabile elementi: elementi = "NPKOHC". Stampare ogni elemento su una riga diversa.
 """
 
-# Soluzione con ciclo for:
+# Versione con ciclo for:
 
 elementi = "NPKOHC"
 for x in elementi:
     print(x)
 
-# Soluzione con ciclo while:
+# Versione con ciclo while:
 
 elementi = "NPKOHC"
 i = 0
@@ -43,13 +43,13 @@ Abbiamo una serie di simboli di elementi chimici (tutti da una sola lettera)
 all'interno della variabile elementi: elementi = "NPKOHC". Stampare ogni elemento su una riga diversa, preceduto dalla scritta "elemento - ".
 """
 
-# Soluzione con ciclo for:
+# Versione con ciclo for:
 
 elementi = "NPKOHC"
 for x in elementi:
     print("elemento - ", x)
 
-# Soluzione con ciclo while:
+# Versione con ciclo while:
 
 elementi = "NPKOHC"
 i = 0
@@ -63,13 +63,13 @@ Abbiamo una serie di simboli di elementi chimici (tutti da una sola lettera) all
 Stampare ogni elemento su una riga diversa, preceduto dalla scritta "elemento - numero n" dove al posto di n scriveremo un numero progressivo che parte da 1.
 """
 
-# Soluzione con ciclo for:
+# Versione con ciclo for:
 
 elementi = "NPKOHC"
 for n, x in enumerate(elementi,start=1):
     print("elemento - numero ",n,": ",x)
 
-# Soluzione con ciclo while:
+# Versione con ciclo while:
 
 elementi = "NPKOHC"
 i = 0
@@ -89,7 +89,7 @@ Fare diverse versioni:
 • una con il metodo delle stringhe .replace().
 """
 
-# Soluzione con ciclo for:
+# Versione con ciclo for:
 
 stringa = "marmalade"
 nuova_stringa = ""
@@ -104,7 +104,7 @@ for x in stringa:
 
 print(nuova_stringa)               
 
-# Soluzione con ciclo while:
+# Versione con ciclo while:
 
 stringa = "marmalade"
 i = 0
@@ -121,7 +121,7 @@ while i < len(stringa):
 
 print(nuova_stringa) 
 
-# Soluzione con metodo stringhe .replace()
+# Versione con metodo stringhe .replace()
 
 x = "marmalade"
 num_a = x.count("a")
@@ -553,6 +553,20 @@ edizioni = [1, 2, 3, 2, 2, 1, 3, 3]
 for x, y, z in zip(studenti,corsi,edizioni):
     if z == 1:
         print(x)
+
+# Alternativa con print più dettagliato:
+
+studenti = ["Alex", "Bob", "Cindy", "Dan", "Emma", "Faith", "Grace", "Henry"]
+corsi = ["Cybersecurity", "Data Analyst", "Backend", "Frontend", "Data Analyst", "Backend", "Frontend", "Cybersecurity"]
+edizioni = [1, 2, 3, 2, 2, 1, 3, 3]
+
+studenti_corso_prima_ed = ""
+
+for x, y, z in zip(studenti,corsi,edizioni):
+    if z == 1:
+        studenti_corso_prima_ed += x + " "
+        
+print("Gli studenti che frequentano un corso alla prima edizione sono:", studenti_corso_prima_ed)
 
 """
 Domanda 24:
