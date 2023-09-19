@@ -518,7 +518,7 @@ for x in lista_cf:
   if indice >= 0:
     lista_cf_95.append(x)
 
-print(lista_cf_95)   
+print(lista_cf_95)
 
 """
 Domanda 22:
@@ -856,10 +856,11 @@ collezionisti = {
         },
     "Debbie":
         {"Funko Pop": 1, "Action Figure": 2, "Manga": 25, "Graphic Novel" :
-            {"Marvel Comics": 5, "Dc Comics": 4}
+            {"Marvel Comics": 5, "Dc Comics": 4, "Image Comics": 6} 
         }
 }
 
+# Image Comics = chiave aggiunta durante l'esercitazione per aumentare la difficoltà - vedi ultimo print di seguito
 # Per verificare che i due dizionari siano identici, utilizzo: "print(dizionario == collezionisti)"
 
 print("1. Quanti funko pop ha Ada?", collezionisti["Ada"]["Funko Pop"])
@@ -891,4 +892,14 @@ for collezionista in collezionisti.values():
             conteggio_graphic_novel += graphic_novel["Dc Comics"]
         if "Marvel Comics" in graphic_novel:
             conteggio_graphic_novel += graphic_novel["Marvel Comics"]
-print(f"7. Quanti graphic novel hanno in tutto i collezionisti? {conteggio_graphic_novel}")
+print(f"7. Quanti graphic novel hanno in tutto i collezionisti? {conteggio_graphic_novel}") 
+
+# Graphic Novel Image Comics esclusi perché se ne tiene conto nel prossimo print (vedi sopra)
+
+conteggio_graphic_novel = 0
+for collezionista in collezionisti.values():    
+    if "Graphic Novel" in collezionista:
+        graphic_novel = collezionista["Graphic Novel"]        
+        for graph_nov in graphic_novel.values():
+            conteggio_graphic_novel += graph_nov
+print(f"Extra. Quanti graphic novel di diverse case editrici hanno in tutto i collezionisti? {conteggio_graphic_novel}")
