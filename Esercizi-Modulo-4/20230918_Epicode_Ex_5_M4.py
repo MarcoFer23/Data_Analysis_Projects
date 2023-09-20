@@ -178,6 +178,11 @@ Mese 2: 90 € (media prec: 100 €)
 Mese 3: 70 € (media prec: 95 €)
 """
 
+guadagni = [100, 90, 70, 40, 50, 80, 90, 120, 80, 20, 50, 50]
+
+print("Mese 1:", str(guadagni[0]))
+print("".join(["Mese " + str(pos+1) +": " + str(guadagni[pos]) + " (media prec: " + str(sum(guadagni[:pos])//(pos)) + ")\n" for pos in range(1,len(guadagni))])) 
+
 """
 Domanda 13:
 Abbiamo una lista con i guadagni degli ultimi 12 mesi (supponiamo da Gennaio a Dicembre):
@@ -185,30 +190,104 @@ Abbiamo una lista con i guadagni degli ultimi 12 mesi (supponiamo da Gennaio a D
 guadagni = [100, 90, 70, 40, 50, 80, 90, 120, 80, 20, 50, 50]
 
 dobbiamo confrontare, stampando tutto a video, il guadagno di ogni mese con la media dei guadagni precedenti, 
-pecificare nell'output se è maggiore o minore
+e specificare nell'output se è maggiore o minore
 """
+
+guadagni = [100, 90, 70, 40, 50, 80, 90, 120, 80, 20, 50, 50]
+
+print("Mese 1:", str(guadagni[0]))
+print("".join(["Mese " + str(pos+1) +": " + str(guadagni[pos]) + ", media prec: " + str(sum(guadagni[:pos])//(pos)) + " - siamo sopra la media\n"
+                if (sum(guadagni[:pos])//(pos))>guadagni[pos] 
+                else "Mese " + str(pos+1) +": " + str(guadagni[pos]) + ", media prec: " + str(sum(guadagni[:pos])//(pos)) + " - siamo sotto la media\n" 
+                for pos in range(1,len(guadagni))]))
 
 """
 Domanda 14:
 Scrivere una funzione che, data una lista di numeri, fornisca in output il maggiore di tutti, senza utilizzare la funzione max()
 """
 
+list = input("Inserire una lista di numeri interi separati da uno spazio:")
+list = list.split(" ")
+
+def max(list):
+    max = 0
+    for x in list:
+        if int(x) > int(max): max = x
+    return int(max)
+
+print("Il valore massimo è: " + str(max(list)))
+
 """
 Domanda 15:
 Scrivere una funzione che, data una lista di numeri, fornisca in output il minimo e il massimo (possiamo usare o meno le funzioni min() e max())
 """
+
+list = input("Inserire una lista di numeri interi separati da uno spazio:")
+list = list.split(" ")
+
+def max(list):
+    max = 0
+    for x in list:
+        if int(x) > int(max): max = x
+    return int(max)
+
+def min(list):
+    min = max(list)
+    for x in list:
+        if int(x) < int(min) : min = x
+    return int(min)
+
+print("Il valore minimo è: " + str(min(list)),"\nIl valore massimo è: " + str(max(list)))
 
 """
 Domanda 16:
 Scrivere una funzione che, data una lista di numeri, fornisca in output i due numeri più grandi
 """
 
+numeri = input("Inserire una lista di numeri interi separati da uno spazio:")
+numeri = numeri.split(" ") # .split() usa lo spazio come separatore per generare una lista di [sub]stringhe, sulla quale andrà ad operare la funzione
+
+def due_n_maggiori(numeri):
+   
+    primo_maggiore = 0
+    secondo_maggiore = 0
+    
+    for x in numeri:
+        x = int(x)
+        if x > primo_maggiore:
+            secondo_maggiore = primo_maggiore
+            primo_maggiore = x
+        elif x > secondo_maggiore and x != primo_maggiore:
+            secondo_maggiore = x
+    
+    return primo_maggiore, secondo_maggiore
+
+risultato = due_n_maggiori(numeri)
+
+if len(numeri) < 2:
+    print("Hey, la lista deve contenere almeno due numeri!") 
+else:
+    print("I due numeri più grandi tra quelli digitati sono:", risultato)
+
 """
 Domanda 17:
 Scrivere una funzione che in input acquisisce una lista di numeri e un numero K; 
-in output, dovrà restituire la media di tutti i numeri nella lista maggiori o uguali a
-K; se non ce ne dovesse essere nessuno, dovrà stampare a schermo un messaggio adeguato
+in output, dovrà restituire la media di tutti i numeri nella lista maggiori o uguali a K; 
+se non ce ne dovesse essere nessuno, dovrà stampare a schermo un messaggio adeguato
 """
+
+num = input("Inserire una lista di numeri interi separati da uno spazio:")
+num = num.split(" ")
+K = input("Inserire un numero intero K come parametro per avviare il calcolo:")
+
+def controllo_K(num,K):
+    numeri_magg_ug_K = [int(x) for x in num if x >= K]
+    if len(numeri_magg_ug_K) > 0: # Se non ci dovessero essere numeri >= a K, la lista definita con comprehension non avrà elementi, e quindi .len() darà come risultato 0
+        numeri_magg_ug_K = "La media dei numeri maggiori o uguali a K è: ", float(sum(numeri_magg_ug_K)/len(numeri_magg_ug_K))
+    else:
+        numeri_magg_ug_K = "La lista inserita non contiene numeri maggiori o uguali a K."
+    return numeri_magg_ug_K
+print(controllo_K(num,K))
 
 """
 Domanda 18:
@@ -227,6 +306,15 @@ Output:
 ***
 ****
 """
+
+num = input("Inserire una lista di numeri interi separati da uno spazio:")
+num = num.split(" ")
+
+def aster(num):
+    for x in num:
+        print ("*" * int(x))
+    return aster
+print(aster(num))
 
 """
 Domanda 19:
@@ -248,6 +336,18 @@ testo = '''Ciao a tutti!'''
 l'output sarà:
 {"C": 1, "i": 2, "a": 2, "o": 1, " ": 2, "t": 3, "u": 1, "!": 1}
 """
+
+racconto = """Lisetta va a passeggio in campagna; è felice di raccogliere i fiori che crescono sulle rive, ai bordi della strada. Ha già un bel mazzetto di ranuncoli e margherite."""
+
+def count_char(racconto):
+    dizionario = {}
+    for x in racconto:
+        if x not in dizionario.keys():
+            dizionario.update({x:1})
+        elif x in dizionario.keys():
+            dizionario[x] += 1 
+    return dizionario
+print("Nel testo ogni carattere X si ripete N volte, secondo lo schema:" + str(count_char(racconto)))
 
 """
 Domanda 20:
@@ -271,6 +371,19 @@ l'output sarà:
 {"C": 1, "i": 2, "a": 2, "o": 1, "t": 3, "u": 1}
 """
 
+racconto = """Lisetta va a passeggio in campagna; è felice di raccogliere i fiori che crescono sulle rive, ai bordi della strada. Ha già un bel mazzetto di ranuncoli e margherite."""
+
+def count_char_alpha_only(racconto):
+    dizionario = {}
+    for x in racconto:
+        if str(x).isalpha():
+            if x not in dizionario.keys():
+                dizionario.update({x:1})
+            elif x in dizionario.keys():
+                dizionario[x] += 1 
+    return dizionario
+print("Nel testo ogni carattere alfabetico X si ripete N volte, secondo lo schema:" + str(count_char_alpha_only(racconto)))
+
 """
 Domanda 21:
 Abbiamo un testo, 
@@ -281,9 +394,21 @@ raccogliere i fiori che crescono sulle rive, ai bordi della strada.
 Ha già un bel mazzetto di ranuncoli e margherite.'''
 
 Creiamo una funzione che prenda il testo in input, e in output ci dia un dizionario che
-contiene ogni tipo di carattere e quante volte appare, senza fare differenza tra maiuscole e
-minuscole.
+contiene ogni tipo di carattere e quante volte appare, senza fare differenza tra maiuscole e minuscole.
 """
+
+racconto = """Lisetta va a passeggio in campagna; è felice di raccogliere i fiori che crescono sulle rive, ai bordi della strada. Ha già un bel mazzetto di ranuncoli e margherite."""
+
+def count_char_all(racconto):
+    dizionario = {}
+    for x in racconto:
+        x = str(x.lower())
+        if x not in dizionario.keys():
+            dizionario.update({x:1})
+        elif x in dizionario.keys():
+            dizionario[x] += 1 
+    return dizionario
+print("Nel testo ogni carattere alfabetico X si ripete N volte, secondo lo schema:" + str(count_char_all(racconto)))
 
 """
 Domanda 22:
@@ -311,3 +436,5 @@ Esaminiamo il dataset:
 9. Quante enoteche ci sono, e come si chiamano?
 10. Quante attività ci sono in Lazio e Abruzzo assieme?
 """
+
+# Il dataset è reperibile su un URL non https, pertanto non sicuro - svolgerò l'esercizio non appena avrò recuperato il dataset in modo sicuro.
