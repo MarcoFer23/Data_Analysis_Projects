@@ -437,4 +437,3 @@ Esaminiamo il dataset:
 10. Quante attività ci sono in Lazio e Abruzzo assieme?
 """
 
-# Il dataset è reperibile su un URL non https, pertanto non sicuro - svolgerò l'esercizio non appena avrò recuperato il dataset in modo sicuro.
