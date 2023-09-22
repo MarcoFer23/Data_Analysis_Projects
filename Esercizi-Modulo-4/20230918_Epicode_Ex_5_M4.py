@@ -437,10 +437,95 @@ Esaminiamo il dataset:
 10. Quante attività ci sono in Lazio e Abruzzo assieme?
 """
 
-# Apertura del file
+# Aptertura del file + svolgimento con open .readline(s)()
+
+import json
+file = open("C:/Users/marco/Epicode_DaPt_2023/Esercizi-Modulo-4/Mappa-dei-pub-circoli-locali-in-Italia.json", "r", encoding="latin1")
+mappe = json.load(file)
+
+# 1. Quanti dati ci sono in totale?
+print(len(mappe))
+
+# 2. Quali sono i metadati?
+print(mappe[0].keys())
+
+# 3. Stampiamo il primo elemento
+print(mappe[0])
+
+# 4. Stampiamo l'ultimo elemento
+print(mappe[-1])
+
+# 5. Riusciamo a stampare un elemento a caso?
+import random
+pos = random.randint(0,len(mappe)-1)
+print(mappe[pos])
+
+# 6. Quali sono gli anni di inserimento presenti?
+set = set()
+for x in mappe:
+    set.add(x["canno_inserimento"])
+print(set)
+
+# Alternativa con comprehension
+
+set = set(x["canno_inserimento"] for x in mappe)
+print(set)       
+
+# 7. Quante attività ci sono nel quadrato di longitudine 9-10 e latitudine 45-46?
+businesses = list()
+for x in mappe :
+    if 9 < float(x["clongitudine"]) < 10 and 45 < float(x["clatitudine"]) < 46 :
+        businesses.append(x["cnome"])
+print(len(businesses))
+
+# Alternativa con comprehension
+
+businesses = [x["cnome"] for x in mappe if 9 <= float(x["clongitudine"]) <= 10 and 45 <= float(x["clatitudine"]) <= 46 ]
+print(len(businesses))
+
+# 8. Quante attività ci sono nella provincia di Vicenza?
+
+businesses_vicenza = list()
+for x in mappe:
+    if x["cprovincia"].lower() == "vicenza":
+        businesses_vicenza.append(x["cnome"])
+print(len(businesses_vicenza))
+
+# Alternativa con comprehension
+
+businesses_vicenza = [x["cnome"] for x in mappe if x["cprovincia"].lower() == "vicenza"]
+print(len(businesses_vicenza))
+
+# 9. Quante enoteche ci sono, e come si chiamano?
+
+enoteche = list()
+for x in mappe:
+    if "enoteca" in x["cnome"].lower():
+        enoteche.append(x["cnome"])
+print("In totale ci sono", len(enoteche), "enoteche. I loro nomi sono:\n", enoteche)
+
+# Alternativa con comprehension
+
+enoteche = [x["cnome"] for x in mappe if "enoteca" in x["cnome"].lower()]
+print("In totale ci sono", len(enoteche), "enoteche. I loro nomi sono:\n", enoteche)
+
+# 10. Quante attività ci sono in Lazio e Abruzzo assieme?
+
+businesses_lz_abr = list()
+for x in mappe:
+    if x["cregione"].lower() == "lazio" or x["cregione"].lower() == "abruzzo":
+        businesses_lz_abr.append(x["cnome"])        
+print("\nComplessivamente, tra Lazio e Abruzzo ci sono", len(businesses_lz_abr), "attività.\n\n I loro nomi sono:\n\n", businesses_lz_abr,"\n")
+
+# Alternativa con comprehension
+
+businesses_lz_abr = [x["cnome"] for x in mappe if x["cregione"].lower() == "lazio" or x["cregione"].lower() == "abruzzo"]
+print("\nComplessivamente, tra Lazio e Abruzzo ci sono", len(businesses_lz_abr), "attività.\n\n I loro nomi sono:\n\n", businesses_lz_abr,"\n")
+
+# Apertura del file + svolgimentoo con Pandas
 
 import pandas as pd
-mappa = pd.read_csv('Mappa-dei-pub-circoli-locali-in-Italia.csv',sep=";")
+mappa = pd.read_csv('pub.csv',sep=";")
 print("Nel file sono ci sono " + str(mappa.__len__()) + " righe.")
 
 # Quali sono i metadati?
