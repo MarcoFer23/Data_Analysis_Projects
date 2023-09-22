@@ -437,10 +437,10 @@ Esaminiamo il dataset:
 10. Quante attività ci sono in Lazio e Abruzzo assieme?
 """
 
+# Apertura del file
+
 import pandas as pd
-
 mappa = pd.read_csv('Mappa-dei-pub-circoli-locali-in-Italia.csv',sep=";")
-
 print("Nel file sono ci sono " + str(mappa.__len__()) + " righe.")
 
 # Quali sono i metadati?
