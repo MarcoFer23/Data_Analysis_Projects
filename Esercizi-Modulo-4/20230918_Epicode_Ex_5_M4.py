@@ -437,3 +437,64 @@ Esaminiamo il dataset:
 10. Quante attività ci sono in Lazio e Abruzzo assieme?
 """
 
+import pandas as pd
+
+mappa = pd.read_csv('Mappa-dei-pub-circoli-locali-in-Italia.csv',sep=";")
+
+print("Nel file sono ci sono " + str(mappa.__len__()) + " righe.")
+
+# Quali sono i metadati?
+print("\nI metadati sono:")
+for x in mappa.columns.values:
+    print("- " + x)
+
+# Stampiamo il primo elemento
+print(mappa[:1])
+
+# Stampiamo l'ultimo elemento
+print(mappa[-1:])
+
+# Riusciamo a stampare un elemento a caso?
+from random import *
+x = randint(0,mappa.__len__()-1)
+mappa[x:x+1]
+
+# Quali sono gli anni di inserimento presenti?
+anni = []
+for x in mappa["Anno inserimento"]:
+    if x not in anni: 
+        anni.append(x)
+anni.sort()
+print((str(anni))) 
+
+# Quante attività ci sono nel quadrato di longitudine 9-10 e latitudine 45-46?
+Long = mappa["Longitudine"].between(9,10)
+Lat = mappa["Latitudine"].between(45,46) 
+mappa[Long & Lat]
+
+# Quante attività ci sono nella provincia di Vicenza?
+Vicenza = mappa["Provincia"] == "VICENZA"
+print("Nella provincia di Vicenza sono presenti " + str(mappa[Vicenza].__len__()) + " attività.")
+
+# Quante enoteche ci sono, e come si chiamano?
+enoteche = []
+for x in mappa["Nome"]:
+    if "ENOTECA" in str(x).upper():
+        enoteche.append(x)
+print("Le enoteche presenti sono:\n")
+print("\n".join(enoteche),"\n")              
+print("Per un totale di " + str(len(enoteche)) + " enoteche.")
+
+# Alternativa
+x=0
+print("Le enoteche presenti sono:\n")
+for el in mappa["Nome"]:
+    if "ENOTECA" in str(el).upper():
+        print(el)
+        x += 1
+print("\nPer un totale di " + str(x) + " enoteche.")
+
+# Quante attività ci sono in Lazio e Abruzzo assieme?
+Lazio = mappa["Regione"] == "Lazio"
+Abruzzo = mappa["Regione"] == "Abruzzo"
+print("Nella regioni Lazio e Abruzzo sono presenti " + str(mappa[Lazio + Abruzzo].__len__()) + " attività.")
