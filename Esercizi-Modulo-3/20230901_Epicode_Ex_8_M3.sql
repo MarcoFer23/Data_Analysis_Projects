@@ -45,7 +45,7 @@ CREATE TABLE Proprietario (
     Recapito_Telefonico VARCHAR(255) NOT NULL,
     Indirizzo VARCHAR(255) NOT NULL,
 		PRIMARY KEY (ID_Proprietario),
-			CONSTRAINT FK_ID_Città_Proprietario_Città FOREIGN KEY (ID_Città) REFERENCES Città(ID_Città)
+			CONSTRAINT FK_ID_Città_Proprietario_Città FOREIGN KEY (ID_Città) REFERENCES Città(ID_Città) on update cascade on delete no action
 );
 
 CREATE TABLE Veterinario (
@@ -77,8 +77,8 @@ CREATE TABLE Animale_Domestico (
     Sterilizzato ENUM("Sì","No") NOT NULL,
     Peso_kg DECIMAL(5, 2) NOT NULL,
 		PRIMARY KEY (ID_Animale),
-			CONSTRAINT FK_ID_Proprietario_Animale_Domestico_Proprietario FOREIGN KEY (ID_Proprietario) REFERENCES Proprietario(ID_Proprietario),
-			CONSTRAINT FR_ID_Specie_Animale_Domestico_Specie FOREIGN KEY (ID_Specie) REFERENCES Specie(ID_Specie)
+			CONSTRAINT FK_ID_Proprietario_Animale_Domestico_Proprietario FOREIGN KEY (ID_Proprietario) REFERENCES Proprietario(ID_Proprietario) on update cascade on delete no action,
+			CONSTRAINT FR_ID_Specie_Animale_Domestico_Specie FOREIGN KEY (ID_Specie) REFERENCES Specie(ID_Specie) on update cascade on delete no action
 );
 
 
@@ -88,8 +88,8 @@ CREATE TABLE Visita (
     ID_Veterinario INT NOT NULL,
     Data_Visita DATETIME,
 		PRIMARY KEY (ID_Animale, Data_Visita),
-			CONSTRAINT FK_ID_Animale_Visita_Animale_Domestico FOREIGN KEY (ID_Animale) REFERENCES Animale_Domestico(ID_Animale),
-			CONSTRAINT FK_ID_Veterinario_Visita_Veterinario FOREIGN KEY (ID_Veterinario) REFERENCES Veterinario(ID_Veterinario)
+			CONSTRAINT FK_ID_Animale_Visita_Animale_Domestico FOREIGN KEY (ID_Animale) REFERENCES Animale_Domestico(ID_Animale) on update cascade on delete no action,
+			CONSTRAINT FK_ID_Veterinario_Visita_Veterinario FOREIGN KEY (ID_Veterinario) REFERENCES Veterinario(ID_Veterinario) on update cascade on delete no action
 );
 
 -- Inserimento dei valori nelle tabelle
