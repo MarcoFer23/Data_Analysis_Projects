@@ -1,2 +1,3 @@
-# Epicode_DaPt_2023
-Repository per gli esercizi svolti durante il corso Data Analyst
+# Data_Analysis_Projects
+ENG: Repository of Data Analysis projects and works
+ITA: Repository contenente progetti e lavori in ambito Data Analyst
