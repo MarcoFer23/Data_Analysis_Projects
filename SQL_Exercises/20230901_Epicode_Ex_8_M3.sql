@@ -312,5 +312,3 @@ order by Veterinario.Nome_Veterinario;
 Dato che per praticità vi sono solo riferimenti a visite del 2023, non c'è necessità di utilizzare delle condizionali tramite WHERE o HAVING (a seconda dei casi).
 
 */
-
--- Bring it on, Python! 
