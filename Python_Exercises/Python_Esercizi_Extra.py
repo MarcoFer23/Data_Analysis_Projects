@@ -47,7 +47,7 @@ Scrivi un programma Python che chiede all'utente di inserire una lista di numeri
 # Soluzione con ciclo while:
 
 stringa = input("Inserisci una lista di numeri separati da spazi: ")
-numeri = input_string.split()  # Divide la stringa in una lista di stringhe
+numeri = stringa.split()  # Divide la stringa in una lista di stringhe
 numeri_pari = []
 i = 0
 
