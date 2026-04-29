@@ -5,9 +5,6 @@ CREATE DATABASE record_label;
 
 USE record_label;
 
--- =====================
--- ALBUMS
--- =====================
 CREATE TABLE albums (
     album_id INT AUTO_INCREMENT PRIMARY KEY,
     album_title VARCHAR(255) NOT NULL,
@@ -15,9 +12,6 @@ CREATE TABLE albums (
     price DECIMAL(6,2) NOT NULL
 );
 
--- =====================
--- TRACKS (each track belongs to one album)
--- =====================
 CREATE TABLE tracks (
     track_id INT AUTO_INCREMENT PRIMARY KEY,
     track_title VARCHAR(255) NOT NULL,
@@ -29,25 +23,16 @@ CREATE TABLE tracks (
         ON DELETE CASCADE
 );
 
--- =====================
--- ARTISTS
--- =====================
 CREATE TABLE artists (
     artist_id INT AUTO_INCREMENT PRIMARY KEY,
     artist_name VARCHAR(255) NOT NULL
 );
 
--- =====================
--- SINGERS (optional separate entity)
--- =====================
 CREATE TABLE singers (
     singer_id INT AUTO_INCREMENT PRIMARY KEY,
     singer_name VARCHAR(255) NOT NULL
 );
 
--- =====================
--- ARTIST ↔ ALBUM (many-to-many)
--- =====================
 CREATE TABLE artist_album (
     artist_id INT NOT NULL,
     album_id INT NOT NULL,
@@ -62,9 +47,6 @@ CREATE TABLE artist_album (
         ON DELETE CASCADE
 );
 
--- =====================
--- ARTIST ↔ TRACK (many-to-many)
--- =====================
 CREATE TABLE artist_track (
     artist_id INT NOT NULL,
     track_id INT NOT NULL,
@@ -79,9 +61,6 @@ CREATE TABLE artist_track (
         ON DELETE CASCADE
 );
 
--- =====================
--- TRACK ↔ SINGER (many-to-many)
--- =====================
 CREATE TABLE track_singer (
     track_id INT NOT NULL,
     singer_id INT NOT NULL,

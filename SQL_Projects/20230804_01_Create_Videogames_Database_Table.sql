@@ -1,7 +1,6 @@
 /* One basic exercise to practice database and table creation.
 Let's create a videogame store databse, and fill it with dedicated tables: */
 
-
 CREATE DATABASE videogames;
 
 USE videogames;

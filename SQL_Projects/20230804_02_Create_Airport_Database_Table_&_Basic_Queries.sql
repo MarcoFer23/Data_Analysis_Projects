@@ -1,7 +1,6 @@
 /* One basic exercise to practice database table creation, and basic SQL queries.
 Let's create an airport database, and fill it with dedicated tables: */
 
-
 CREATE DATABASE airport_data;
 
 USE airport_data;
