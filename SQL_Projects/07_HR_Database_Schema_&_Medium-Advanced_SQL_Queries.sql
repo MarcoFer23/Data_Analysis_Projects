@@ -347,4 +347,4 @@ SELECT
 FROM ranked_employees
 WHERE row_num <= 3;
 
--- Any feedback is welcome, thanks for having a look at my SQL codes!
+-- Any feedback is welcome, thanks for having a look at my SQL projects!
