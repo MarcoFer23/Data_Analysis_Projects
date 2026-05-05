@@ -397,7 +397,7 @@ WHERE
 GROUP BY vet_full_name
 ORDER BY vet_full_name;
 
--- Extra #1: Select top veterinarians by number of visits.
+-- Extra #1: Select the veterinarian with the highest number of visits.
 SELECT 
     ve.veterinarian_id,
     CONCAT(ve.first_name, ' ', ve.last_name) AS vet_full_name,
