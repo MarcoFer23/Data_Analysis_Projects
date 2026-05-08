@@ -1,6 +1,6 @@
 """
 Domanda 9:
-Calcolare (ma non stampare) le prime N potenze di K; ognuna di esse andrà memorizzata in coda a una lista.
+Calcolare le prime N potenze di K; ognuna di esse andrà memorizzata in coda a una lista.
 Alla fine, stampare la lista risultante. Proviamo con diversi valori di K, oppure facciamola inserire all'utente.
 
 Realizzare due versioni:
