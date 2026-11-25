@@ -1,4 +1,4 @@
---Exploring a mock database on Analyst Hive website running on DuckDB, using several SQL queries.
+--Exploring a mock database running on DuckDB, using several SQL queries.
 
 /*
 Example 1: Find the Nth highest refund (3rd highest)
